@@ -13,22 +13,23 @@ Almost every guidelines can have exceptions. Common ones are listed below; any o
 ## File & Directory Names
 R files and associated directories should have meaningful names, lowercase letters, and words should be separated by dashes. R files should end in `.R` (not `.r`).
 
-    GOOD:
-    timeseries-analysis.R
-    process-compression-ratios.R
-    dhs-data-cleaning/
+```r
+GOOD:
+timeseries-analysis.R
+process-compression-ratios.R
+dhs-data-cleaning/
 
-    BAD:
-    timeseries_analysis.R
-    TimeseriesAnalysis.R
-    timeseries-analysis.r
-    process_compression-ratios.R
-    foobar.R
-    DHS_Data_Cleaning/
-    DHS-Data-Cleaning/
-    DHSDataCleaning/
-    dhsDataCleaning/
-
+BAD:
+timeseries_analysis.R
+TimeseriesAnalysis.R
+timeseries-analysis.r
+process_compression-ratios.R
+foobar.R
+DHS_Data_Cleaning/
+DHS-Data-Cleaning/
+DHSDataCleaning/
+dhsDataCleaning/
+```
 
 **Exceptions**:
 
@@ -37,17 +38,19 @@ R files and associated directories should have meaningful names, lowercase lette
 ## Function Names
 Function names should be descriptive verbs, with the first letter of each word capitalized, and no separators between words. They should not overload functions or variable names from base R or packages being used.
 
-    GOOD:
-    MakeChart()
-    GetRatioDiscrepancies()
+```r
+GOOD:
+MakeChart()
+GetRatioDiscrepancies()
 
-    BAD:
-    makechart()
-    makeChart()
-    Get_Ratio_Discrepancies()
-    Get.Ratio.Discrepancies()
-    func()
-    mean()
+BAD:
+makechart()
+makeChart()
+Get_Ratio_Discrepancies()
+Get.Ratio.Discrepancies()
+func()
+mean()
+```
 
 **Exceptions**:
 
@@ -57,20 +60,22 @@ Function names should be descriptive verbs, with the first letter of each word c
 ## Variable Names
 Variable names should be descriptive, lower-case nouns, with underscores to separate words. They should not overload function or variable names from base R or packages being used. Periods should be reserved for method dispatching with R's OO systems. In `data.frame`'s, append `_uncleaned` to the name of uncleaned variables for clarity.
 
-    GOOD:
-    max_date
-    bad_entries
-    some_measure_uncleaned
+```r
+GOOD:
+max_date
+bad_entries
+some_measure_uncleaned
 
-    BAD:
-    maxDate
-    max-date
-    max.date
-    BadEntries
-    badEntries
-    someMeasureX
-    some_measure_raw
-    c
+BAD:
+maxDate
+max-date
+max.date
+BadEntries
+badEntries
+someMeasureX
+some_measure_raw
+c
+```
 
 **Exceptions**:
 
@@ -84,116 +89,122 @@ Variable names should be descriptive, lower-case nouns, with underscores to sepa
 Always use two spaces per level of indentation. _Never_ use literal tabs (note that RStudio will use spaces when the tab key is pressed by default, and most editors can be configured to do the same).
 When function calls or definitions span multiple lines, either align subsequent lines with the first character inside the parentheses, or place each clause inside the parentheses on its own line with an additional level of indentation and place the closing parenthesis on its own line.
 
-    GOOD:
-    stopifnot(is_character(a),
-              is_logical(b))
+```r
+GOOD:
+stopifnot(is_character(a),
+          is_logical(b))
 
-    stopifnot(
-      is_character(a),
-      is_logical(b)
-    )
+stopifnot(
+  is_character(a),
+  is_logical(b)
+)
 
-    foobar <- function(a = "foobarbaz",
-                       b = "FooBarBaz")
+foobar <- function(a = "foobarbaz",
+                   b = "FooBarBaz")
 
-    foobar <- function(
-      a = "foobarbaz",
-      b = "FooBarBaz"
-    )
+foobar <- function(
+  a = "foobarbaz",
+  b = "FooBarBaz"
+)
 
 
-    BAD:
-    stopifnot(
-              is_character(a),
-              is_logical(b)
-    )
+BAD:
+stopifnot(
+          is_character(a),
+          is_logical(b)
+)
 
-    foobar <- function(a = "foobarbaz",
-      b = "FooBarBaz")
+foobar <- function(a = "foobarbaz",
+  b = "FooBarBaz")
+```
 
 ## Spacing
 Place spaces around binary/infix operators, after commas, and before parentheses not part of a function call.
 Never put spaces before a comma, around colons (e.g. `::`), or around code inside brackets/parentheses.
 Use extra spaces to vertically align similar lines of code along operators.
 
-    GOOD:
-    x <- y + z
-    x %in% c(y, z)
-    if (x == TRUE) y <- z
-    rCharts::renderChart2()
-    x <- foobar(a = "foo", b = "bar")
+```r
+GOOD:
+x <- y + z
+x %in% c(y, z)
+if (x == TRUE) y <- z
+rCharts::renderChart2()
+x <- foobar(a = "foo", b = "bar")
 
-    foo    <- foo    + x
-    foobar <- foobar + x
+foo    <- foo    + x
+foobar <- foobar + x
 
 
-    BAD:
-    x<-y+z
-    x%in%c(y, z)
-    x %in% c(y , z)
-    x %in% c( y, z )
-    if(x == TRUE) y <- z
-    if (x==TRUE) y <- z
-    if (x == TRUE) y<-z
-    rCharts :: renderChart2()
-    x <- foobar(a="foo", b="bar")
-    x <- foobar(a = "foo", b="bar")
+BAD:
+x<-y+z
+x%in%c(y, z)
+x %in% c(y , z)
+x %in% c( y, z )
+if(x == TRUE) y <- z
+if (x==TRUE) y <- z
+if (x == TRUE) y<-z
+rCharts :: renderChart2()
+x <- foobar(a="foo", b="bar")
+x <- foobar(a = "foo", b="bar")
 
-    foo <- foo + x
-    foobar <- foobar + x
+foo <- foo + x
+foobar <- foobar + x
+```
 
 ## Curly Braces
 An opening curly brace is never on it's own line, but a closing curly brace is always on it's own line (except when followed by `else`) and followed by a newline.
 Short `if` statements can omit curly braces if they are confined to one line.
 Indent code inside of curly braces.
 
-    GOOD:
-    if (foo == "foo") {
-        bar <- "bar"
-    }
-
-    if (foo == "foo") {
-        bar <- "bar"
-    } else {
-        bar <- "foobar"
-    }
-
-    if (foo == "foo") bar <- "bar"
-
-    BAD:
-    if (foo == "foo") {
-        bar <- "bar"}
-
-    if (foo == "foo")
-    {
-        bar <- "bar"
-    }
-
-    if (foo == "foo") {bar <- "bar"}
-
-    if (foo == "foo")
-      bar <- "bar"
-
-    if (foo == "foo") {
-        bar <- "bar"
-    } else {bar <- "foobar"}
-
-    if (foo == "foo") {
+```r
+GOOD:
+if (foo == "foo") {
     bar <- "bar"
-    }
+}
 
+if (foo == "foo") {
+    bar <- "bar"
+} else {
+    bar <- "foobar"
+}
+
+if (foo == "foo") bar <- "bar"
+
+BAD:
+if (foo == "foo") {
+    bar <- "bar"}
+
+if (foo == "foo")
+{
+    bar <- "bar"
+}
+
+if (foo == "foo") {bar <- "bar"}
+
+if (foo == "foo")
+  bar <- "bar"
+
+if (foo == "foo") {
+    bar <- "bar"
+} else {bar <- "foobar"}
+
+if (foo == "foo") {
+bar <- "bar"
+}
+```
 
 ## Assignment
 Use `<-`, not `=`, when assigning values to names. Reserve `=` for argument-passing in function calls.
 
-    GOOD:
-    foo <- "bar"
-    foobar <- function(a="foo", b="bar")
+```r
+GOOD:
+foo <- "bar"
+foobar <- function(a="foo", b="bar")
 
-    BAD:
-    foo = "bar"
-    foobar = function(a<-"foo", b<-"bar")
-
+BAD:
+foo = "bar"
+foobar = function(a<-"foo", b<-"bar")
+```
 
 ## Line Length
 We don't adhere to a strict limit, but 120 is a good rule of thumb. Long lines can always be broken into multiple lines or commands, which is much more readable.
@@ -212,37 +223,42 @@ Always comment your code! We prefer too-many to too-few comments. Comments shoul
 
 Organize your code into blocks which accomplish a single goal, and describe that goal in a prefacing comment following a newline:
 
-    var <- "last line of last codeblock"
+```r
+var <- "last line of last codeblock"
 
-    # cleanup and order the available columns
-    setnames(dt, "value", "size")
-    output.cols <- c("timestamp", "leapserv_id", "model_family", "region_name", "database", "size")
-    bad.cols <- setdiff(names(dt), output.cols)
-    dt[, (bad.cols) := NULL]
-    setcolorder(dt, output.cols)
-
+# cleanup and order the available columns
+setnames(dt, "value", "size")
+output.cols <- c("timestamp", "leapserv_id", "model_family", "region_name", "database", "size")
+bad.cols <- setdiff(names(dt), output.cols)
+dt[, (bad.cols) := NULL]
+setcolorder(dt, output.cols)
+```
 
 Use in-line comments sparingly:
 
-    dt.list <- lapply(sheet.names, function(s) setDT(read_excel(xlsx.file, sheet=s, skip=2)))  # first 2 rows are junk
+```r
+dt.list <- lapply(sheet.names, function(s) setDT(read_excel(xlsx.file, sheet=s, skip=2)))  # first 2 rows are junk
+```
 
 You can also use comments to group blocks into larger chunks. These comments should begin with a pounds sign and four dashes, then have a description with first letters capitalized (like a title), followed by four more dashes. They should be preceeded by 2 newlines and followed by one.
 
-    # ---- Load data ----
+```r
+# ---- Load data ----
 
-    # load some dataset
-    ...
-    ...
+# load some dataset
+...
+...
 
-    # load some other dataset
-    ...
-    ...
+# load some other dataset
+...
+...
 
 
-    # ---- Plot data ----
+# ---- Plot data ----
 
-    # plot some stuff
-    ...
+# plot some stuff
+...
+```
 
 ## Function Documentation
 Every function must be prefaced by a special set of comments which describe and explain the function. **Another user should be able to use your function by reading only these comments**, ignoring the code entirely.
@@ -256,21 +272,23 @@ There are 3 or 4 sections to a "function doc" comment:
 
 Here's an example:
 
-    # Create a table which gives data size by timestamp, leap, and database
-    #
-    # This function reads in all the timestamped files, puts them together, converts some columns, removes some columns, and imposes logical columns names + ordering.
-    # It also filters out non-primary models families, and entries with a zero or unavailable size.
-    #
-    # Args:
-    #   directory: (character) a path to the directory with the raw CSV's
-    #   prefix:    (character) the prefix all the relevant files in `directory` share
-    #
-    # Returns:
-    #   A data.table object with columns (timestamp, leapserv_id, model_family, region_name, database, size) and a row for each database type in each leap found in each collection.
-    #   Keyed on (timestamp, model_family, region_name) for faster filtration + aggregation
-    GetMasterTable <- function(directory, prefix) {
-        ...
-    }
+```r
+# Create a table which gives data size by timestamp, leap, and database
+#
+# This function reads in all the timestamped files, puts them together, converts some columns, removes some columns, and imposes logical columns names + ordering.
+# It also filters out non-primary models families, and entries with a zero or unavailable size.
+#
+# Args:
+#   directory: (character) a path to the directory with the raw CSV's
+#   prefix:    (character) the prefix all the relevant files in `directory` share
+#
+# Returns:
+#   A data.table object with columns (timestamp, leapserv_id, model_family, region_name, database, size) and a row for each database type in each leap found in each collection.
+#   Keyed on (timestamp, model_family, region_name) for faster filtration + aggregation
+GetMasterTable <- function(directory, prefix) {
+    ...
+}
+```
 
 Notice that the arguments' classes/types are listed in parentheses. We don't have a formal standard for these descriptors ("string" and "character" are both common), but the point is to give indication of what kinds of objects are valid.
 
